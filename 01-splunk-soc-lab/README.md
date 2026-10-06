@@ -19,4 +19,4 @@ See `screenshots/` folder
 ---
 
 Author: Libiane Souza
-Date: October 6, 2024
+Date: October 6, 2026
