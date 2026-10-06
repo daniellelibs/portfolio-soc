@@ -1,0 +1,16 @@
+# Splunk SOC Lab - Basic Queries
+
+# QUERY 1
+index=_internal | head 10
+
+# QUERY 2
+index=_internal source=*splunkd.log*
+
+# QUERY 3
+index=_internal | stats count by host
+
+# QUERY 4
+index=_internal (source=*splunkd.log* OR source=*metrics.log*)
+
+# QUERY 5
+index=_internal | timechart count by source
