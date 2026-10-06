@@ -1,16 +1,44 @@
-# Splunk SOC Lab - Basic Queries
+# ================================================
+# Splunk SOC Lab - Week 1 - Basic Queries
+# Author: Libiane Souza
+# Date: 2026-10-06
+# ================================================
 
-# QUERY 1
+# QUERY 1: Basic search with limit
+# Objective: Retrieve first 10 events from _internal index
+# Expected result: Table with _time, source, host, _raw columns
+# Use case: Understanding basic Splunk search syntax
+
 index=_internal | head 10
 
-# QUERY 2
+
+# QUERY 2: Filter by specific source
+# Objective: Find events only from splunkd.log
+# Expected result: Events filtered to single source
+# Use case: Narrowing search to specific log file
+
 index=_internal source=*splunkd.log*
 
-# QUERY 3
+
+# QUERY 3: Group and count by field
+# Objective: Count events grouped by hostname
+# Expected result: Table with host and count columns
+# Use case: Identifying which hosts are generating most events
+
 index=_internal | stats count by host
 
-# QUERY 4
+
+# QUERY 4: Multiple filter conditions (OR logic)
+# Objective: Search multiple sources simultaneously
+# Expected result: Events from two different log types
+# Use case: Combining multiple conditions in searches
+
 index=_internal (source=*splunkd.log* OR source=*metrics.log*)
 
-# QUERY 5
+
+# QUERY 5: Temporal visualization
+# Objective: See events over time grouped by source
+# Expected result: Line graph showing event count timeline
+# Use case: Identifying trends and spikes in event volume
+
 index=_internal | timechart count by source
